@@ -1,7 +1,7 @@
 package cn.edu.xmu.JavaEE_Exp1.controller;
 
 import cn.edu.xmu.JavaEE_Exp1.mapper.generator.GoodsPoMapper;
-import cn.edu.xmu.JavaEE_Exp1.mapper.po.GoodsPo;
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.GoodsPo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

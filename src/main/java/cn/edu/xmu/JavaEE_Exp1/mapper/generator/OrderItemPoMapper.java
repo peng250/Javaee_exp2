@@ -1,7 +1,7 @@
 package cn.edu.xmu.JavaEE_Exp1.mapper.generator;
 
-import cn.edu.xmu.JavaEE_Exp1.mapper.po.OrderItemPo;
-import cn.edu.xmu.JavaEE_Exp1.mapper.po.OrderItemPoExample;
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.OrderItemPo;
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.OrderItemPoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

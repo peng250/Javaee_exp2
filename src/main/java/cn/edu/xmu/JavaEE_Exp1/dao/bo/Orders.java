@@ -1,5 +1,7 @@
 package cn.edu.xmu.JavaEE_Exp1.dao.bo;
 
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.OrdersPo;
+
 import java.time.LocalDateTime;
 
 public class Orders {
@@ -57,6 +59,37 @@ public class Orders {
     private LocalDateTime gmtModified;
 
     private Long grouponId;
+
+    public Orders(OrdersPo ordersPo) {
+        assert null !=ordersPo;
+        this.id = ordersPo.getId();
+        this.customerId = ordersPo.getCustomerId();
+        this.shopId = ordersPo.getShopId();
+        this.orderSn = ordersPo.getOrderSn();
+        this.pid = ordersPo.getPid();
+        this.consignee = ordersPo.getConsignee();
+        this.regionId = ordersPo.getRegionId();
+        this.address = ordersPo.getAddress();
+        this.mobile = ordersPo.getMobile();
+        this.message = ordersPo.getMessage();
+        this.orderType = ordersPo.getOrderType();
+        this.freightPrice = ordersPo.getFreightPrice();
+        this.couponId = ordersPo.getCouponId();
+        this.couponActivityId = ordersPo.getCouponActivityId();
+        this.discountPrice = ordersPo.getDiscountPrice();
+        this.originPrice = ordersPo.getOriginPrice();
+        this.presaleId = ordersPo.getPresaleId();
+        this.grouponDiscount = ordersPo.getGrouponDiscount();
+        this.rebateNum = ordersPo.getRebateNum();
+        this.confirmTime = ordersPo.getConfirmTime();
+        this.shipmentSn = ordersPo.getShipmentSn();
+        this.state = ordersPo.getState();
+        this.substate = ordersPo.getSubstate();
+        this.beDeleted = ordersPo.getBeDeleted();
+        this.gmtCreate = ordersPo.getGmtCreate();
+        this.gmtModified = ordersPo.getGmtModified();
+        this.grouponId = ordersPo.getGrouponId();
+    }
 
 
 }

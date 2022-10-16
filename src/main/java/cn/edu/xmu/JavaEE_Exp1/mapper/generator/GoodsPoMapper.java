@@ -1,7 +1,7 @@
 package cn.edu.xmu.JavaEE_Exp1.mapper.generator;
 
-import cn.edu.xmu.JavaEE_Exp1.mapper.po.GoodsPo;
-import cn.edu.xmu.JavaEE_Exp1.mapper.po.GoodsPoExample;
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.GoodsPo;
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.GoodsPoExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
