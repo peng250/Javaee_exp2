@@ -1,10 +1,19 @@
 package cn.edu.xmu.JavaEE_Exp1.dao.bo;
 
+import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.OrderItemPo;
 import cn.edu.xmu.JavaEE_Exp1.mapper.generator.po.OrdersPo;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@Data
+@NoArgsConstructor
 public class Orders {
+
+    private List<OrderItem> orderItemList=new ArrayList<>();
 
     private Long id;
 
@@ -90,6 +99,15 @@ public class Orders {
         this.gmtModified = ordersPo.getGmtModified();
         this.grouponId = ordersPo.getGrouponId();
     }
+
+    public void addOrderItem(List<OrderItemPo> poList) {
+        for(OrderItemPo orderItemPo:poList) {
+            this.orderItemList.add(new OrderItem(orderItemPo));
+        }
+    }
+
+
+
 
 
 }
