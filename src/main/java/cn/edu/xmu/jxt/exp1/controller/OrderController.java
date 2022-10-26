@@ -1,8 +1,8 @@
 package cn.edu.xmu.jxt.exp1.controller;
 
-import cn.edu.xmu.jxt.exp1.controller.vo.OrdersVo;
-import cn.edu.xmu.jxt.exp1.dao.bo.Orders;
-import cn.edu.xmu.jxt.exp1.service.OrdersService;
+import cn.edu.xmu.jxt.exp1.controller.vo.OrderVo;
+import cn.edu.xmu.jxt.exp1.dao.bo.Order;
+import cn.edu.xmu.jxt.exp1.service.OrderService;
 import cn.edu.xmu.jxt.exp1.util.BusinessException;
 import cn.edu.xmu.jxt.exp1.util.ResponseUtil;
 import cn.edu.xmu.jxt.exp1.util.Common;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/orders")
-public class OrdersController {
+public class OrderController {
 
-    private OrdersService ordersService;
+    private OrderService orderService;
 
-    private Logger logger = LoggerFactory.getLogger(OrdersController.class);
+    private Logger logger = LoggerFactory.getLogger(OrderController.class);
 
     @Autowired
-    public OrdersController(OrdersService ordersService) {
-        this.ordersService=ordersService;
+    public OrderController(OrderService orderService) {
+        this.orderService=orderService;
     }
 
     /**
@@ -33,11 +33,11 @@ public class OrdersController {
     public Object getOrderById(@PathVariable("id")long id) {
         logger.debug("getOrderById: id={}",id);
         Object retObj=null;
-        Orders orders=null;
+        Order order=null;
         try{
-            orders=ordersService.retrieveOrdersByID(id,true);
-            OrdersVo ordersVo=new OrdersVo(orders);
-            retObj= ResponseUtil.ok(ordersVo);
+            order=orderService.retrieveOrderByID(id,true);
+            OrderVo orderVo=new OrderVo(order);
+            retObj= ResponseUtil.ok(orderVo);
         }catch (BusinessException e){
             retObj= Common.returnWithStatus(null,e);
         }

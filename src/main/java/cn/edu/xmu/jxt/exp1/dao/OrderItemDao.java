@@ -18,10 +18,10 @@ public class OrderItemDao {
         this.orderItemPoMapper = orderItemPoMapper;
     }
 
-    public List<OrderItemPo> getOrderItemByOrders(Long ordersId){
+    public List<OrderItemPo> getOrderItemByOrder(Long orderId){
         OrderItemPoExample orderItemPoExample=new OrderItemPoExample();
         OrderItemPoExample.Criteria criteria=orderItemPoExample.createCriteria();
-        criteria.andOrderIdEqualTo(ordersId);
+        criteria.andOrderIdEqualTo(orderId);
         List<OrderItemPo> orderItemPoList=orderItemPoMapper.selectByExample(orderItemPoExample);
         return  orderItemPoList;
     }

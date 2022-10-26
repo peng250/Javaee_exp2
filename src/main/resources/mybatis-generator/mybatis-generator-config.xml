@@ -152,7 +152,7 @@
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table tableName="orders" domainObjectName="OrdersPo"
+        <table tableName="orders" domainObjectName="OrderPo"
                enableCountByExample="false" enableUpdateByExample="true"
                enableDeleteByExample="false" enableSelectByExample="true"
                selectByExampleQueryId="false" delimitAllColumns="true">
