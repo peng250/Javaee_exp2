@@ -2941,6 +2941,7 @@ Consider defining a bean of type 'cn.edu.xmu.jxt.exp1.mapper.generator.OrderPoMa
 2022-10-27 15:47:27.805 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-10-27 15:47:27.806 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2022-10-27 15:47:27.807 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+<<<<<<< HEAD
 2022-10-27 15:53:44.308 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2022-10-27 15:53:44.314 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
 2022-10-27 15:53:49.514 [main] INFO  cn.edu.xmu.jxt.exp1.Exp1Application - Starting Exp1Application using Java 17.0.4.1 on peng with PID 15236 (C:\Users\14339\Desktop\JavaEE_Exp1\target\classes started by 14339 in C:\Users\14339\Desktop\JavaEE_Exp1)
@@ -2958,3 +2959,5 @@ Consider defining a bean of type 'cn.edu.xmu.jxt.exp1.mapper.generator.OrderPoMa
 2022-10-27 15:53:53.645 [main] INFO  cn.edu.xmu.jxt.exp1.Exp1Application - Started Exp1Application in 5.017 seconds (JVM running for 6.637)
 2022-10-27 15:53:55.385 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2022-10-27 15:53:55.393 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+=======
+>>>>>>> origin/main
