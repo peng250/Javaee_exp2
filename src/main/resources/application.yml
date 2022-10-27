@@ -1,8 +1,8 @@
 spring:
   datasource:
-      username: root
-      password: peng
-      url: jdbc:mysql://localhost:3306/exp1?serverTimezone=UTC
+      username: demouser
+      password: 123456
+      url: jdbc:mysql://mysql:3306/oomall_demo?serverTimezone=UTC
       driver-class-name: com.mysql.cj.jdbc.Driver
        #数据库连接池
       type: com.alibaba.druid.pool.DruidDataSource
