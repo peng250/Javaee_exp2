@@ -24,4 +24,16 @@ public class OrderService {
         logger.debug("retrieveOrderByID：id = {}, all = {}",id,all);
         return orderDao.retrieveOrderByID(id,all);
     }
+
+
+    /**
+     * 新增订单
+     *
+     * @param order 新订单信息
+     * @return Order Bo
+     */
+    @Transactional(rollbackFor = {BusinessException.class})
+    public Order createProduct(Order order) throws BusinessException {
+        return orderDao.createOrder(order);
+    }
 }
