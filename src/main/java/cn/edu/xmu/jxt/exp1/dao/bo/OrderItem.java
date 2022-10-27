@@ -47,4 +47,22 @@ public class OrderItem {
         this.gmtCreate = orderItemPo.getGmtCreate();
         this.gmtModified = orderItemPo.getGmtModified();
     }
+
+    /**
+     * 用订单详情 bo 创建 po
+     *
+     * @return OrderItemPo
+     */
+    public OrderItemPo createPo() {
+        OrderItemPo orderItemPo = new OrderItemPo();
+        orderItemPo.setOrderId(this.orderId);
+        orderItemPo.setGoodsSkuId(this.goodsSkuId);
+        orderItemPo.setQuantity(this.quantity);
+        orderItemPo.setPrice(this.price);
+        orderItemPo.setDiscount(this.discount);
+        orderItemPo.setName(this.name);
+        orderItemPo.setCouponActivityId(this.couponActivityId);
+        orderItemPo.setBeShareId(this.beShareId);
+        return orderItemPo;
+    }
 }
