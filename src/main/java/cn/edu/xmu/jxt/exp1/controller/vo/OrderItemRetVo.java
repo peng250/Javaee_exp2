@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @JsonInclude
-public class OrderItemVo {
+public class OrderItemRetVo {
 
     private Long skuId;
 
@@ -26,7 +26,7 @@ public class OrderItemVo {
 
     private Long beShareId;
 
-    public OrderItemVo(OrderItem orderItem) {
+    public OrderItemRetVo(OrderItem orderItem) {
         this.skuId = orderItem.getGoodsSkuId();
         this.orderId = orderItem.getOrderId();
         this.name = orderItem.getName();
@@ -35,5 +35,18 @@ public class OrderItemVo {
         this.discount = orderItem.getDiscount();
         this.couponActId = orderItem.getCouponActivityId();
         this.beShareId = orderItem.getBeShareId();
+    }
+
+    public OrderItem createBo() {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setGoodsSkuId(this.skuId);
+        orderItem.setOrderId(this.orderId);
+        orderItem.setName(this.name);
+        orderItem.setQuantity(this.quantity);
+        orderItem.setPrice(this.price);
+        orderItem.setDiscount(this.discount);
+        orderItem.setCouponActivityId(this.couponActId);
+        orderItem.setBeShareId(this.beShareId);
+        return orderItem;
     }
 }

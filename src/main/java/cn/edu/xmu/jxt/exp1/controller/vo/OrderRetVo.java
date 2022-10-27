@@ -57,7 +57,7 @@ public class OrderRetVo {
 
     private String shipmentSn;
 
-    private List<OrderItemVo> orderItemVoList=new ArrayList<>();
+    private List<OrderItemRetVo> orderItemVoList=new ArrayList<>();
 
     public OrderRetVo(Order order) {
         this.id = order.getId();
@@ -82,9 +82,9 @@ public class OrderRetVo {
         this.presaleId = order.getPresaleId();
         this.shipmentSn = order.getShipmentSn();
         if(order.getOrderItemList().size() > 0){
-            List<OrderItemVo> orderItemVos=new ArrayList<>(order.getOrderItemList().size());
+            List<OrderItemRetVo> orderItemVos=new ArrayList<>(order.getOrderItemList().size());
             for(OrderItem orderItem: order.getOrderItemList()){
-                OrderItemVo orderItemVo=new OrderItemVo(orderItem);
+                OrderItemRetVo orderItemVo=new OrderItemRetVo(orderItem);
                 orderItemVos.add(orderItemVo);
             }
             this.orderItemVoList=orderItemVos;
