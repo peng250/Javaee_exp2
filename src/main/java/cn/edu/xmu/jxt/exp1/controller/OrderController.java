@@ -1,6 +1,7 @@
 package cn.edu.xmu.jxt.exp1.controller;
 
 import cn.edu.xmu.jxt.exp1.controller.vo.OrderRetVo;
+import cn.edu.xmu.jxt.exp1.controller.vo.OrderVo;
 import cn.edu.xmu.jxt.exp1.dao.bo.Order;
 import cn.edu.xmu.jxt.exp1.service.OrderService;
 import cn.edu.xmu.jxt.exp1.util.BusinessException;
@@ -9,7 +10,11 @@ import cn.edu.xmu.jxt.exp1.util.Common;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static cn.edu.xmu.jxt.exp1.util.Common.returnWithStatus;
 
 @RestController
 @RequestMapping("/orders")
@@ -39,10 +44,22 @@ public class OrderController {
             OrderRetVo orderVo=new OrderRetVo(order);
             retObj= ResponseUtil.ok(orderVo);
         }catch (BusinessException e){
-            retObj= Common.returnWithStatus(null,e);
+            retObj= returnWithStatus(null,e);
         }
         return retObj;
     }
 
-
+    @PostMapping("")
+    public Object createOrder(@RequestBody OrderVo orderVo) {
+        Object retObj;
+        try {
+            Order order = orderVo.createBo();
+            Order retOrder =  orderService.createProduct(order);
+            OrderVo retOrderVo = new OrderVo(retOrder);
+            retObj = new ResponseEntity<>(ResponseUtil.ok(retOrderVo), HttpStatus.CREATED);
+        } catch (BusinessException e) {
+            retObj = returnWithStatus(null, e);
+        }
+        return  retObj;
+    }
 }
