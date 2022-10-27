@@ -106,8 +106,39 @@ public class Order {
         }
     }
 
-
-
-
-
+    /**
+     * 用订单 bo 创建 po
+     *
+     * @return OrderPo
+     */
+    public OrderPo createPo() {
+        OrderPo orderPo = new OrderPo();
+        orderPo.setCustomerId(this.customerId);
+        orderPo.setShopId(this.shopId);
+        orderPo.setOrderSn(this.orderSn);
+        orderPo.setPid(this.pid);
+        orderPo.setConsignee(this.consignee);
+        orderPo.setRegionId(this.regionId);
+        orderPo.setAddress(this.address);
+        orderPo.setMobile(this.mobile);
+        orderPo.setMessage(this.message);
+        orderPo.setOrderType(this.orderType);
+        orderPo.setFreightPrice(this.freightPrice);
+        orderPo.setCouponId(this.couponId);
+        orderPo.setCouponActivityId(this.couponActivityId);
+        orderPo.setDiscountPrice(this.discountPrice);
+        orderPo.setOriginPrice(this.originPrice);
+        orderPo.setPresaleId(this.presaleId);
+        orderPo.setGrouponDiscount(this.grouponDiscount);
+        orderPo.setRebateNum(this.rebateNum);
+        orderPo.setConfirmTime(this.confirmTime);
+        orderPo.setShipmentSn(this.shipmentSn);
+        orderPo.setState(this.state);
+        orderPo.setSubstate(this.substate);
+        orderPo.setBeDeleted(this.beDeleted);
+        orderPo.setGmtCreate(this.gmtCreate);
+        orderPo.setGmtModified(this.gmtModified);
+        orderPo.setGrouponId(this.grouponId);
+        return orderPo;
+    }
 }

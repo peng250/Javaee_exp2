@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -60,6 +61,33 @@ public class OrderDao {
         return order;
     }
 
-
-
+    /**
+     * 新增订单
+     *
+     * @param order 订单 Bo
+     * @return 订单 Bo
+     */
+    public Order createOrder(Order order) throws BusinessException {
+        Order retObj;
+        try {
+            // 插入订单
+            OrderPo orderPo = order.createPo();
+            orderPoMapper.insertSelective(orderPo);
+            // 插入订单明细
+            List<OrderItemPo> orderItemPoList = new ArrayList<>();
+            order.getOrderItemList().forEach(orderItem -> {
+                orderItem.setOrderId(orderPo.getId());
+                OrderItemPo orderItemPo = orderItem.createPo();
+                orderItemDao.createOrderItem(orderItemPo);
+                orderItemPoList.add(orderItemPo);
+            });
+            // 构造返回对象
+            retObj = new Order(orderPo);
+            retObj.addOrderItem(orderItemPoList);
+        } catch (DataAccessException e) {
+            logger.error(e.getMessage());
+            throw new BusinessException(ReturnNo.INTERNAL_SERVER_ERR, "数据库访问错误");
+        }
+        return retObj;
+    }
 }

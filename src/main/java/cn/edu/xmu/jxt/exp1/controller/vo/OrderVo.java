@@ -1,45 +1,28 @@
 package cn.edu.xmu.jxt.exp1.controller.vo;
 
-import cn.edu.xmu.jxt.exp1.dao.bo.OrderItem;
 import cn.edu.xmu.jxt.exp1.dao.bo.Order;
+import cn.edu.xmu.jxt.exp1.dao.bo.OrderItem;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 订单视图对象
+ *
+ * @author Dasong Lu
+ */
 @Data
 @NoArgsConstructor
-@JsonInclude
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderVo {
 
-    private Long id;
+    private List<OrderItemVo> orderItems = new ArrayList<>();
 
-    private String orderSn;
-
-    private Long pid;
-
-    private Byte orderType;
-
-    private Byte state;
-
-    private LocalDateTime gmtCreate;
-
-    private LocalDateTime gmtModified;
-
-    private LocalDateTime confirmTime;
-
-    private Long originPrice;
-
-    private Long discountPrice;
-
-    private Long freightPrice;
-
-    private Integer rebateNum;
-
-    private String message;
+    private String consignee;
 
     private Long regionId;
 
@@ -47,49 +30,35 @@ public class OrderVo {
 
     private String mobile;
 
-    private String consignee;
-
     private Long couponId;
-
-    private Long grouponId;
 
     private Long presaleId;
 
-    private String shipmentSn;
+    private Long grouponId;
 
-    private List<OrderItemVo> orderItemVoList=new ArrayList<>();
+    public Order createBo() {
+        Order order = new Order();
+        order.setConsignee(this.consignee);
+        order.setRegionId(this.regionId);
+        order.setAddress(this.address);
+        order.setMobile(this.mobile);
+        order.setCouponId(this.couponId);
+        order.setPresaleId(this.presaleId);
+        order.setGrouponId(this.grouponId);
+        List<OrderItem> orderItemList = new ArrayList<>();
+        this.orderItems.forEach(orderItemVo -> orderItemList.add(orderItemVo.createBo()));
+        order.setOrderItemList(orderItemList);
+        return order;
+    }
 
     public OrderVo(Order order) {
-        this.id = order.getId();
-        this.orderSn = order.getOrderSn();
-        this.pid = order.getPid();
-        this.orderType = order.getOrderType();
-        this.state = order.getState();
-        this.gmtCreate = order.getGmtCreate();
-        this.gmtModified = order.getGmtModified();
-        this.confirmTime = order.getConfirmTime();
-        this.originPrice = order.getOriginPrice();
-        this.discountPrice = order.getDiscountPrice();
-        this.freightPrice = order.getFreightPrice();
-        this.rebateNum = order.getRebateNum();
-        this.message = order.getMessage();
+        this.consignee = order.getConsignee();
         this.regionId = order.getRegionId();
         this.address = order.getAddress();
         this.mobile = order.getMobile();
-        this.consignee = order.getConsignee();
         this.couponId = order.getCouponId();
-        this.grouponId = order.getGrouponId();
         this.presaleId = order.getPresaleId();
-        this.shipmentSn = order.getShipmentSn();
-        if(order.getOrderItemList().size() > 0){
-            List<OrderItemVo> orderItemVos=new ArrayList<>(order.getOrderItemList().size());
-            for(OrderItem orderItem: order.getOrderItemList()){
-                OrderItemVo orderItemVo=new OrderItemVo(orderItem);
-                orderItemVos.add(orderItemVo);
-            }
-            this.orderItemVoList=orderItemVos;
-        }
+        this.grouponId = order.getGrouponId();
+        order.getOrderItemList().forEach(orderItem -> this.orderItems.add(new OrderItemVo(orderItem)));
     }
-
-
 }
