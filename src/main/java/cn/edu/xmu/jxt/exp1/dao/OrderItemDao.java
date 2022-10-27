@@ -25,4 +25,13 @@ public class OrderItemDao {
         List<OrderItemPo> orderItemPoList=orderItemPoMapper.selectByExample(orderItemPoExample);
         return  orderItemPoList;
     }
+
+    /**
+     * 创建订单项
+     *
+     * @param orderItemPo 订单项 po
+     */
+    public void createOrderItem(OrderItemPo orderItemPo){
+        orderItemPoMapper.insert(orderItemPo);
+    }
 }
