@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @JsonInclude
-public class OrderVo {
+public class OrderRetVo {
 
     private Long id;
 
@@ -59,7 +59,7 @@ public class OrderVo {
 
     private List<OrderItemVo> orderItemVoList=new ArrayList<>();
 
-    public OrderVo(Order order) {
+    public OrderRetVo(Order order) {
         this.id = order.getId();
         this.orderSn = order.getOrderSn();
         this.pid = order.getPid();

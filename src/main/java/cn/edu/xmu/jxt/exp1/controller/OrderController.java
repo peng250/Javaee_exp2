@@ -1,6 +1,6 @@
 package cn.edu.xmu.jxt.exp1.controller;
 
-import cn.edu.xmu.jxt.exp1.controller.vo.OrderVo;
+import cn.edu.xmu.jxt.exp1.controller.vo.OrderRetVo;
 import cn.edu.xmu.jxt.exp1.dao.bo.Order;
 import cn.edu.xmu.jxt.exp1.service.OrderService;
 import cn.edu.xmu.jxt.exp1.util.BusinessException;
@@ -36,7 +36,7 @@ public class OrderController {
         Order order=null;
         try{
             order=orderService.retrieveOrderByID(id,true);
-            OrderVo orderVo=new OrderVo(order);
+            OrderRetVo orderVo=new OrderRetVo(order);
             retObj= ResponseUtil.ok(orderVo);
         }catch (BusinessException e){
             retObj= Common.returnWithStatus(null,e);
