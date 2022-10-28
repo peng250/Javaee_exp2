@@ -15,6 +15,8 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import static cn.edu.xmu.jxt.exp1.util.Common.cloneObj;
+
 @Repository
 public class OrderDao {
 
@@ -41,7 +43,7 @@ public class OrderDao {
             if (all) {
                 order = this.retrieveFullOrder(orderPo);
             } else {
-                order=new Order(orderPo);
+                order=cloneObj(orderPo,Order.class);
             }
 
             logger.debug("retrieveOrderByID: order = {}",  order);
@@ -55,7 +57,7 @@ public class OrderDao {
 
     private Order retrieveFullOrder(OrderPo orderPo) throws DataAccessException{
         assert orderPo !=null;
-        Order order=new Order(orderPo);
+        Order order=cloneObj(orderPo,Order.class);
         List<OrderItemPo> orderItemPoList=orderItemDao.getOrderItemByOrder(orderPo.getId());
         order.addOrderItem(orderItemPoList);
         return order;
@@ -71,18 +73,18 @@ public class OrderDao {
         Order retObj;
         try {
             // 插入订单
-            OrderPo orderPo = order.createPo();
+            OrderPo orderPo = cloneObj(order, OrderPo.class);
             orderPoMapper.insertSelective(orderPo);
             // 插入订单明细
             List<OrderItemPo> orderItemPoList = new ArrayList<>();
             order.getOrderItemList().forEach(orderItem -> {
                 orderItem.setOrderId(orderPo.getId());
-                OrderItemPo orderItemPo = orderItem.createPo();
+                OrderItemPo orderItemPo = cloneObj(orderItem, OrderItemPo.class);
                 orderItemDao.createOrderItem(orderItemPo);
                 orderItemPoList.add(orderItemPo);
             });
             // 构造返回对象
-            retObj = new Order(orderPo);
+            retObj = cloneObj(orderPo, Order.class);
             retObj.addOrderItem(orderItemPoList);
         } catch (DataAccessException e) {
             logger.error(e.getMessage());

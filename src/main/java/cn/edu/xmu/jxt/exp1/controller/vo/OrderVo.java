@@ -30,6 +30,8 @@ public class OrderVo {
 
     private String mobile;
 
+    private String message;
+
     private Long couponId;
 
     private Long presaleId;
