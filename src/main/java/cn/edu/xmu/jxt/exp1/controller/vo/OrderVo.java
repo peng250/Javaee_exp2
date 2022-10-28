@@ -44,6 +44,7 @@ public class OrderVo {
         order.setRegionId(this.regionId);
         order.setAddress(this.address);
         order.setMobile(this.mobile);
+        order.setMessage(this.message);
         order.setCouponId(this.couponId);
         order.setPresaleId(this.presaleId);
         order.setGrouponId(this.grouponId);
@@ -58,6 +59,7 @@ public class OrderVo {
         this.regionId = order.getRegionId();
         this.address = order.getAddress();
         this.mobile = order.getMobile();
+        this.message = order.getMessage();
         this.couponId = order.getCouponId();
         this.presaleId = order.getPresaleId();
         this.grouponId = order.getGrouponId();
