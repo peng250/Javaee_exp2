@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <modules>
-        <module>Exp_dao</module>
+        <module>Exp_Dao</module>
         <module>Exp_ResultSet</module>
     </modules>
     <parent>
