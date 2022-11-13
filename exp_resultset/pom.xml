@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>Exp_ResultSet</artifactId>
+    <artifactId>exp_resultset</artifactId>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
